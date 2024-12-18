@@ -30,10 +30,15 @@ try {
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
 foreach ($result as $record) {
+  // 画像データをエンコード
+  $image_data = base64_encode($record["image"]);
+
   $output .= "
     <tr>
-      <td>{$record["deadline"]}</td>
+      <td>{$record["updated_at"]}</td>
+      <td>{$record["title"]}</td>
       <td>{$record["todo"]}</td>
+      <td><img src='data:image/jpeg;base64,{$image_data}' alt='Image' width='100'></td>
     </tr>
   ";
 }
@@ -47,18 +52,20 @@ foreach ($result as $record) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DB連携型todoリスト（一覧画面）</title>
+  <title>SQL連携型todoリスト（一覧画面）</title>
 </head>
 
 <body>
   <fieldset>
-    <legend>DB連携型todoリスト（一覧画面）</legend>
-    <a href="todo_input.php">入力画面</a>
+    <legend>SQL連携型todoリスト（一覧画面）</legend>
+    <a href="txt_image_input.php">入力画面</a>
     <table>
       <thead>
         <tr>
-          <th>deadline</th>
+          <th>update</th>
+          <th>title</th>
           <th>todo</th>
+          <th>Image</th>
         </tr>
       </thead>
       <tbody>
