@@ -31,14 +31,24 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
 foreach ($result as $record) {
 
+  // $output .= "
+  //   <tr>
+  //     <td>{$record["updated_at"]}</td>
+  //     <td>{$record["title"]}</td>
+  //     <td>{$record["todo"]}</td>
+  //     <td><img src='{$record["image"]}' alt='Image' width='100'></td>
+  //   </tr>
+  // ";
+
   $output .= "
     <tr>
-      <td>{$record["updated_at"]}</td>
-      <td>{$record["title"]}</td>
-      <td>{$record["todo"]}</td>
       <td><img src='{$record["image"]}' alt='Image' width='100'></td>
+      <td>Date:{$record["updated_at"]}<BR>
+      Title:{$record["title"]}<BR>
+      ToDo:{$record["todo"]}</td>
     </tr>
   ";
+
 }
 
 
@@ -60,10 +70,11 @@ foreach ($result as $record) {
     <table>
       <thead>
         <tr>
-          <th>update</th>
+          <!-- <th>update</th>
           <th>title</th>
           <th>todo</th>
-          <th>Image</th>
+          <th>Image</th> -->
+          <th>リスト</th>
         </tr>
       </thead>
       <tbody>
