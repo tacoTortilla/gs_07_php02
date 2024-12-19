@@ -30,15 +30,13 @@ try {
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = "";
 foreach ($result as $record) {
-  // 画像データをエンコード
-  $image_data = base64_encode($record["image"]);
 
   $output .= "
     <tr>
       <td>{$record["updated_at"]}</td>
       <td>{$record["title"]}</td>
       <td>{$record["todo"]}</td>
-      <td><img src='data:image/jpeg;base64,{$image_data}' alt='Image' width='100'></td>
+      <td><img src='{$record["image"]}' alt='Image' width='100'></td>
     </tr>
   ";
 }

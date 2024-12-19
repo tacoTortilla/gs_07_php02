@@ -6,15 +6,15 @@
 // POSTデータ確認
 if (
     !isset($_POST['todo']) || $_POST['todo'] === '' ||
-    !isset($_POST['deadline']) || $_POST['deadline'] === ''
+    !isset($_POST['title']) || $_POST['title'] === ''
   ) {
     exit('ParamError');
   }
 
 $todo = $_POST['todo'];
-$deadline = $_POST['deadline'];
 $title = $_POST['title'];
 
+// ストレージに画像を保存する
 // 画像が送信されているか確認
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $uploadDir = 'uploads/'; // アップロード先ディレクトリ
@@ -50,7 +50,7 @@ try {
 }
 
 // SQL作成&実行
-$sql = 'INSERT INTO gs_07_php02_table (id, todo, deadline, created_at, updated_at,image,title) VALUES (NULL, :todo, :deadline, now(), now(),:image,:title)';
+$sql = 'INSERT INTO gs_07_php02_table (id, todo, created_at, updated_at,image,title) VALUES (NULL, :todo,  now(), now(),:targetFilePath,:title)';
 
 $stmt = $pdo->prepare($sql);
 
@@ -58,8 +58,7 @@ $stmt = $pdo->prepare($sql);
 // バインド処理をすることにより データベースの攻撃対策
 $stmt->bindValue(':title', $title, PDO::PARAM_STR);
 $stmt->bindValue(':todo', $todo, PDO::PARAM_STR);
-$stmt->bindValue(':deadline', $deadline, PDO::PARAM_STR);
-$stmt->bindValue(':image', $image, PDO::PARAM_LOB); // BLOB型にバインド
+$stmt->bindValue(':targetFilePath', $targetFilePath, PDO::PARAM_STR);
 
 
 // SQL実行（実行に失敗すると `sql error ...` が出力される）

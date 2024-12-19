@@ -28,9 +28,6 @@
         todo:  <textarea name="todo" rows="4" cols="30"></textarea>
       </div>
       <div>
-        deadline: <input type="date" name="deadline">
-      </div>
-      <div>
         <button>submit</button>
       </div>
     </fieldset>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-12-18 19:49:50
+-- 生成日時: 2024-12-19 15:34:52
 -- サーバのバージョン： 10.4.32-MariaDB
 -- PHP のバージョン: 8.2.12
 
@@ -30,10 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `gs_07_php02_table` (
   `id` int(4) NOT NULL,
   `todo` varchar(200) NOT NULL,
-  `deadline` date NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `image` longblob NOT NULL,
+  `image` varchar(100) NOT NULL,
   `title` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -41,9 +40,11 @@ CREATE TABLE `gs_07_php02_table` (
 -- テーブルのデータのダンプ `gs_07_php02_table`
 --
 
-INSERT INTO `gs_07_php02_table` (`id`, `todo`, `deadline`, `created_at`, `updated_at`, `image`, `title`) VALUES
-(12, 'とうどう', '2024-12-18', '2024-12-19 03:36:47', '2024-12-19 03:36:47', 0x433a5c78616d70705c746d705c7068704439392e746d70, 'タイトル'),
-(13, 'です\r\nです', '2024-12-19', '2024-12-19 03:40:00', '2024-12-19 03:40:00', 0x433a5c78616d70705c746d705c7068703139362e746d70, '次の入力');
+INSERT INTO `gs_07_php02_table` (`id`, `todo`, `created_at`, `updated_at`, `image`, `title`) VALUES
+(15, 'tess', '2024-12-19 23:22:19', '2024-12-19 23:22:19', 'uploads/about_03.jpg', 'tes'),
+(16, 'おいしそう', '2024-12-19 23:26:31', '2024-12-19 23:26:31', 'uploads/delicious_cheese.jpg', 'チーズの画像'),
+(17, '顔色は良さそう', '2024-12-19 23:27:18', '2024-12-19 23:27:18', 'uploads/factory06.jpg', '牛の体調'),
+(18, 'ste', '2024-12-19 23:33:59', '2024-12-19 23:33:59', 'uploads/delicious_cheese.jpg', 'test');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -63,7 +64,7 @@ ALTER TABLE `gs_07_php02_table`
 -- テーブルの AUTO_INCREMENT `gs_07_php02_table`
 --
 ALTER TABLE `gs_07_php02_table`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
